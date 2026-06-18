@@ -1,0 +1,10 @@
+name: Learning & Study Tutor Crew
+agents:
+  - role: Curriculum Designer
+  - role: Explainer
+  - role: Quiz & Practice Generator
+tasks:
+  - Break down complex topics into learnable modules.
+  - Explain concepts with analogies and examples.
+  - Create quizzes, flashcards, and spaced repetition plans.
+process: sequential

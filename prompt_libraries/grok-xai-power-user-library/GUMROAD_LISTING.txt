@@ -1,0 +1,31 @@
+TITLE: Grok & xAI Power User Prompt Library (150+ Prompts)
+
+PRICE: $19
+
+DESCRIPTION:
+The most advanced collection of Grok-specific prompts available.
+
+Inside you'll get:
+• 150+ field-tested prompts optimized for Grok 4.3
+• Master Prompt Chains for autonomous work
+• Tool-use scaffolding prompts
+• Meta-prompts that create better prompts
+• "Prompts people don't know" — advanced techniques used by top researchers and builders
+• Categories: Reasoning, Research, Agent Building, Creative Work, Daily Power Use
+
+Stop wasting time with generic prompts. These are the exact templates that separate casual users from people who get 5-10x better output from Grok.
+
+Perfect for:
+- Power users
+- Researchers
+- Indie hackers & builders
+- Writers who want to 10x their process
+- Anyone serious about getting the most from xAI models
+
+Includes usage instructions and variation templates for every major prompt.
+
+Instant download. No fluff.
+
+TAGS: grok, xai, prompt library, ai prompts, grok prompts, advanced prompting, master prompt collection, ai tools, agent prompts, power user prompts
+
+COVER IDEA: Dark futuristic background with glowing blue "GROK" text and subtle circuit/AI patterns. Clean, premium, technical but not corporate.

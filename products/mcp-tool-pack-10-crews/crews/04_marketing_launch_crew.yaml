@@ -1,0 +1,10 @@
+name: Marketing & Launch Crew
+agents:
+  - role: Market Researcher
+  - role: Copywriter
+  - role: Launch Strategist
+tasks:
+  - Research target audience and competitors.
+  - Write multiple variants of sales copy, emails, social posts.
+  - Create full launch plan with channels, timing, and hooks.
+process: sequential

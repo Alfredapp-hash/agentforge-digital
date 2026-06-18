@@ -1,0 +1,10 @@
+name: Product Ideator Crew
+agents:
+  - role: Trend Spotter
+  - role: Problem Validator
+  - role: Idea Synthesizer
+tasks:
+  - Scan for emerging problems and opportunities.
+  - Validate demand and competition.
+  - Generate and score 10 product ideas with MVP scopes.
+process: sequential

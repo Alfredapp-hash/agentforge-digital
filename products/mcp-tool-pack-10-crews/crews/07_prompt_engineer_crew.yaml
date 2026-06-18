@@ -1,0 +1,10 @@
+name: Prompt Engineer Crew
+agents:
+  - role: Prompt Researcher
+  - role: Prompt Architect
+  - role: Tester & Optimizer
+tasks:
+  - Find and adapt best prompting techniques.
+  - Design advanced multi-step and tool-use prompts.
+  - Test, score, and iterate on prompt performance.
+process: sequential

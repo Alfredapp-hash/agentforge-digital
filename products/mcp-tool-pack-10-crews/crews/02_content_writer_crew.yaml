@@ -1,0 +1,14 @@
+name: Content Writer Crew
+agents:
+  - role: Research Synthesizer
+    goal: Turn raw research into structured, engaging outlines.
+  - role: Writer
+    goal: Produce high-quality, on-brand long-form content.
+  - role: Editor
+    goal: Polish for clarity, flow, SEO, and conversion.
+tasks:
+  - description: Create a detailed outline from research.
+  - description: Write the full draft following the outline and style guide.
+  - description: Edit, fact-check, optimize, and add hooks/CTAs.
+process: sequential
+verbose: true

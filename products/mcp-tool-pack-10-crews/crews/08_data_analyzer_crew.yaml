@@ -1,0 +1,10 @@
+name: Data Analyzer Crew
+agents:
+  - role: Data Cleaner
+  - role: Analyst
+  - role: Visualizer & Reporter
+tasks:
+  - Ingest and clean data.
+  - Run statistical and qualitative analysis.
+  - Generate insights report with charts (text descriptions) and recommendations.
+process: sequential

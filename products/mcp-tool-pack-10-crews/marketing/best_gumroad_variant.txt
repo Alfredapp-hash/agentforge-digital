@@ -1,0 +1,5 @@
+# Best Variant Suggestion (use this for initial Gumroad publish)
+Use Variant A for best quick conversion.
+Title: High-Value AI Prompt Pack (+ Bonus Agent Prompts)
+Price: $17
+Include the bonuses and scarcity language from the variants file.

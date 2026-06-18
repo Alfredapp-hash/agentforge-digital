@@ -1,0 +1,29 @@
+TITLE: Agent Ops Dashboard (Notion) · $29
+
+PRICE: 29
+
+DESCRIPTION:
+The ultimate Notion dashboard for running and monitoring your AI agent operations.
+
+Track agents, tasks, runs, costs, outputs, and performance in one beautiful, fully linked workspace.
+
+Built for solo builders and small teams using CrewAI, AutoGen, LangGraph, or custom agents.
+
+Includes:
+- Agent Registry database
+- Task Queue with priorities and statuses
+- Run History with metrics (tokens, cost, time, success rate)
+- Performance Analytics views (by agent, by day, ROI)
+- Prompt Library linked
+- Cost Tracker with xAI/OpenAI integration notes
+- Templates for 10 common agent crews
+
+Pure Notion — duplicate and customize in seconds. No code required.
+
+Perfect OTO for the Agent Stack or Blueprint OS.
+
+Screenshot it, share on X and r/Notion, watch it sell.
+
+TAGS: notion, agent ops, crewai, ai agents, dashboard, notion template, ai tools, automation, solopreneur tools
+
+COVER IDEA: Clean dark Notion-style screenshot of the dashboard with blue accents, agent icons, and "Agent Ops" title. Professional, modern, tech-forward.

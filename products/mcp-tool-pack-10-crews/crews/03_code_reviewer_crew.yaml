@@ -1,0 +1,13 @@
+name: Code Reviewer & Builder Crew
+agents:
+  - role: Architect
+    goal: Design clean, scalable code structure.
+  - role: Implementer
+    goal: Write production-ready code.
+  - role: Reviewer
+    goal: Find bugs, security issues, and suggest improvements.
+tasks:
+  - description: Propose architecture and file structure for the feature.
+  - description: Implement the code following best practices.
+  - description: Review, test mentally, suggest refactors and tests.
+process: hierarchical

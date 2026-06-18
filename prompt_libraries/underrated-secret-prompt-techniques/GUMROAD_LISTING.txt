@@ -1,0 +1,27 @@
+TITLE: Underrated & Secret Prompt Techniques (Prompts Most People Don't Know)
+
+PRICE: $17
+
+DESCRIPTION:
+85+ high-leverage prompt patterns and techniques that are disproportionately effective but almost never discussed in public prompt packs.
+
+This is the "I had no idea you could do that" collection.
+
+What you get:
+• Meta-prompts that improve other prompts
+• Advanced reasoning patterns beyond basic Chain-of-Thought
+• Research techniques top practitioners actually use
+• Creative and output quality "negative prompting" tricks
+• Agent and workflow patterns that fly under the radar
+• Cross-model techniques that work on Grok, Claude, GPT, etc.
+
+Positioning:
+- "The prompt techniques the top 1% use but rarely share"
+- Perfect for curious power users who have already bought the basic libraries
+- Excellent upsell or bundle product
+
+Low competition, high curiosity, strong perceived insider value.
+
+TAGS: advanced prompting, secret prompts, underrated prompts, prompt engineering, meta prompts, power user prompts, ai techniques
+
+COVER IDEA: Mysterious / intriguing design — dark background with subtle question marks or "hidden" visual elements, premium feel. "Insider knowledge" vibe.

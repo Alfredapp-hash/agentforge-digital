@@ -1,0 +1,10 @@
+name: Agent Optimizer (Meta) Crew
+agents:
+  - role: Performance Auditor
+  - role: Prompt Refiner
+  - role: Architecture Advisor
+tasks:
+  - Analyze past agent runs for bottlenecks and failures.
+  - Suggest improved prompts, tools, and process changes.
+  - Recommend new agent roles or crew structures for better ROI.
+process: sequential
