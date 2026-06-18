@@ -1,0 +1,15 @@
+crewai
+crewai-tools
+langchain
+langchain-openai
+langchain-community
+chromadb
+duckduckgo-search
+ddgs
+pypdf2
+pandas
+streamlit
+requests
+fpdf2
+python-slugify
+python-dotenv
