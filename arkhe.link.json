@@ -15,7 +15,7 @@
       "note": "Canonical AgentOS + BrainVault monorepo on Alfredapp-hash"
     },
     "agentforge_digital": {
-      "url": "https://github.com/WonWayup89/agentforge-digital",
+      "url": "https://github.com/Alfredapp-hash/agentforge-digital",
       "local": "~/agentforge_digital",
       "role": "monetization-plane"
     }
