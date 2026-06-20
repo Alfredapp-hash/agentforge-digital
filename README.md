@@ -2,7 +2,21 @@
 
 **Goal:** Complete autonomy + profitability as fast as possible by generating real, sellable digital products and publishing them to Gumroad with minimal human intervention.
 
-Built on the exact original files from `agentforge_digital.zip`.
+Part of the **Arkhe stack** — linked to [Alfred](https://github.com/Alfredapp-hash/Alfred) (knowledge) and **AgentOS** (missions). See `arkhe.link.json` for canonical paths.
+
+| Plane | Repo | This repo's role |
+|-------|------|------------------|
+| Knowledge | [Alfred](https://github.com/Alfredapp-hash/Alfred) | Alfred routes pack-building context from BrainVault |
+| Execution | [Alfredapp-hash/Alfred](https://github.com/Alfredapp-hash/Alfred) (`~/Desktop/Projects/ArkheApps/Arkhe-AgentOS`) | Builds packs → `BrainVault/08-packs/builds/` |
+| Monetization | **This repo** | Publishes to Gumroad via `generated_products/` + curated `products/` |
+
+```bash
+# AgentOS → this repo (from AgentOS root)
+pnpm forge:publish -- --pack-root BrainVault/08-packs/builds/<slug> --publish
+
+# Alfred routes pack intent
+cd ~/Desktop/ArkheApps/Alfred && pnpm route "build sellable AI pack"
+```
 
 ## Quick Start
 ```bash

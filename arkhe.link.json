@@ -1,0 +1,35 @@
+{
+  "name": "AgentForge Digital",
+  "role": "publish-bridge",
+  "description": "Gumroad publish factory for AgentOS pack builds. Receives artifacts from BrainVault/08-packs/builds and runs autonomy_runner.py.",
+  "repos": {
+    "alfred": {
+      "url": "https://github.com/Alfredapp-hash/Alfred",
+      "local": "~/Desktop/ArkheApps/Alfred",
+      "role": "knowledge-plane"
+    },
+    "agentos": {
+      "url": "https://github.com/Alfredapp-hash/Alfred",
+      "local": "~/Desktop/Projects/ArkheApps/Arkhe-AgentOS",
+      "role": "execution-plane",
+      "note": "Canonical AgentOS + BrainVault monorepo on Alfredapp-hash"
+    },
+    "agentforge_digital": {
+      "url": "https://github.com/WonWayup89/agentforge-digital",
+      "local": "~/agentforge_digital",
+      "role": "monetization-plane"
+    }
+  },
+  "paths": {
+    "pack_builds": "~/Desktop/Projects/ArkheApps/Arkhe-AgentOS/BrainVault/08-packs/builds",
+    "publish_inbox": "~/agentforge_digital/generated_products",
+    "curated_catalog": "~/agentforge_digital/products",
+    "prompt_libraries": "~/agentforge_digital/prompt_libraries"
+  },
+  "commands": {
+    "agentos_smoke": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm smoke:agentforge",
+    "agentos_publish": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm forge:publish -- --publish",
+    "alfred_route": "cd ~/Desktop/ArkheApps/Alfred && pnpm route \"build sellable AI pack\"",
+    "forge_autonomy": "cd ~/agentforge_digital && source .venv/bin/activate && python autonomy_runner.py --cycles 1 --publish"
+  }
+}
