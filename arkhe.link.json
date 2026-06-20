@@ -1,23 +1,105 @@
 {
-  "name": "AgentForge Digital",
-  "role": "publish-bridge",
-  "description": "Gumroad publish factory for AgentOS pack builds. Receives artifacts from BrainVault/08-packs/builds and runs autonomy_runner.py.",
-  "repos": {
-    "alfred": {
-      "url": "https://github.com/Alfredapp-hash/Alfred",
-      "local": "~/Desktop/ArkheApps/Alfred",
-      "role": "knowledge-plane"
+  "name": "Arkhe Stack Link Manifest",
+  "brain": {
+    "canonical": true,
+    "description": "Single neural graph — markdown neurons, SQLite synapse index, runtime mesh overlay",
+    "vault_root": "~/Desktop/Projects/ArkheApps/Arkhe-AgentOS/BrainVault",
+    "vault_github": "https://github.com/Alfredapp-hash/Alfred/tree/main/BrainVault",
+    "synapse_db": "~/.arkhe/synapse.db",
+    "data_dir": "~/.arkhe",
+    "index_command": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm cortex:reindex",
+    "route_command": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm cortex:route",
+    "deprecated_vaults": [
+      "~/Desktop/ArkheApps/Alfred/BrainVault"
+    ],
+    "neural_layers": {
+      "knowledge_graph": {
+        "store": "BrainVault/**/*.md",
+        "index": "synapse.db tables: nodes, edges, nodes_fts, node_embeddings",
+        "runtime": "CortexBridge → SynapseRouter"
+      },
+      "runtime_mesh": {
+        "store": "synapse-engine.ts agent collaboration weights",
+        "purpose": "Learn which agents work well together — feeds back into edge weights",
+        "do_not_duplicate_as_second_vault": true
+      }
     },
+    "memory_pathways": [
+      "keyword_fts",
+      "semantic_embeddings",
+      "graph_edges",
+      "timeline",
+      "permission",
+      "evidence",
+      "task",
+      "skill"
+    ],
+    "progressive_load_order": [
+      "00_Command_Center",
+      "01-projects",
+      "03-agents",
+      "02-skills",
+      "01_Neurons",
+      "07_Evidence",
+      "06-tools"
+    ]
+  },
+  "repos": {
     "agentos": {
       "url": "https://github.com/Alfredapp-hash/Alfred",
       "local": "~/Desktop/Projects/ArkheApps/Arkhe-AgentOS",
       "role": "execution-plane",
-      "note": "Canonical AgentOS + BrainVault monorepo on Alfredapp-hash"
+      "hosts_brain": true
+    },
+    "alfred_synapse_dev": {
+      "url": "https://github.com/Alfredapp-hash/Alfred",
+      "local": "~/Desktop/ArkheApps/Alfred",
+      "role": "legacy-synapse-packages-only",
+      "note": "Do not use BrainVault here — use agentos BrainVault"
     },
     "agentforge_digital": {
       "url": "https://github.com/Alfredapp-hash/agentforge-digital",
       "local": "~/agentforge_digital",
       "role": "monetization-plane"
+    },
+    "tapsafe": {
+      "url": "https://github.com/Alfredapp-hash/tapsafe",
+      "local": "~/tapsafe",
+      "role": "product"
+    },
+    "cleartrace": {
+      "url": "https://github.com/Alfredapp-hash/Clear-Trace",
+      "local": "~/SentinelScope/cleartrace",
+      "role": "product"
+    },
+    "forecast_wars": {
+      "url": "https://github.com/Alfredapp-hash/Forcast-Wars",
+      "local": "~/Desktop/Projects/ArkheApps/Arkhe-AgentOS/apps/forecast-wars",
+      "role": "product"
+    }
+  },
+  "bridges": {
+    "tapsafe": {
+      "kind": "http",
+      "base_url": "https://api.tapsafe.app/v1",
+      "health": "/health",
+      "local_dev": "http://localhost:3001/v1",
+      "endpoints": {
+        "health": { "method": "GET", "path": "/health" },
+        "report": { "method": "GET", "path": "/report/:pwsid" }
+      }
+    },
+    "cleartrace": {
+      "kind": "http",
+      "base_url": "http://localhost:3000",
+      "health": "/api/health",
+      "endpoints": {
+        "health": { "method": "GET", "path": "/api/health" }
+      }
+    },
+    "agentforge": {
+      "kind": "pack",
+      "note": "forge-packager → ~/agentforge_digital/generated_products/"
     }
   },
   "paths": {
@@ -27,9 +109,10 @@
     "prompt_libraries": "~/agentforge_digital/prompt_libraries"
   },
   "commands": {
+    "brain_reindex": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm cortex:reindex",
+    "brain_route": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm cortex:route",
     "agentos_smoke": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm smoke:agentforge",
     "agentos_publish": "cd ~/Desktop/Projects/ArkheApps/Arkhe-AgentOS && pnpm forge:publish -- --publish",
-    "alfred_route": "cd ~/Desktop/ArkheApps/Alfred && pnpm route \"build sellable AI pack\"",
     "forge_autonomy": "cd ~/agentforge_digital && source .venv/bin/activate && python autonomy_runner.py --cycles 1 --publish"
   }
 }
