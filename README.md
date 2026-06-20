@@ -12,7 +12,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 export XAI_API_KEY=sk-...your_xai_key...
-export GUMROAD_ACCESS_TOKEN=your_gumroad_dev_token   # https://gumroad.com/settings/developer
+export GUMROAD_ACCESS_TOKEN=your_gumroad_token   # Settings → Advanced → Applications → Generate access token
+                                              # https://gumroad.com/settings/advanced
 
 streamlit run agentforge_main.py
 ```

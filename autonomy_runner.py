@@ -12,7 +12,13 @@ Usage:
 import argparse
 import os
 import logging
-from agentforge_main import run_full_autonomous_cycle
+from pathlib import Path
+
+from agentforge_main import (
+    run_full_autonomous_cycle,
+    sync_gumroad_sales,
+    analyze_top_performers_and_suggest,
+)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(message)s")
 logger = logging.getLogger("autonomy_runner")

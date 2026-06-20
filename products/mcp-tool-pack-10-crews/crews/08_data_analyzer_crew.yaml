@@ -1,10 +1,31 @@
 name: Data Analyzer Crew
+description: Turn CSVs, metrics, and logs into decisions and narratives.
 agents:
   - role: Data Cleaner
-  - role: Analyst
-  - role: Visualizer & Reporter
+    goal: Profile datasets, flag quality issues, and define analysis-ready views.
+    backstory: Analyst who never trusts raw exports without validation.
+    verbose: true
+  - role: Insight Analyst
+    goal: Find patterns, anomalies, and actionable insights with statistical humility.
+    backstory: Decision-focused analyst who answers "so what?" not just "what."
+    verbose: true
+  - role: Report Writer
+    goal: Produce executive summaries, charts descriptions, and recommended next actions.
+    backstory: Communicator who makes data legible to non-technical stakeholders.
 tasks:
-  - Ingest and clean data.
-  - Run statistical and qualitative analysis.
-  - Generate insights report with charts (text descriptions) and recommendations.
+  - description: >
+      Profile the dataset — row count, missing values, key columns, obvious outliers,
+      and 3 questions the data can realistically answer.
+    expected_output: Data profile memo with quality flags and analysis plan.
+    agent: Data Cleaner
+  - description: >
+      Execute the analysis plan. Surface top 5 insights with confidence levels and caveats.
+    expected_output: Insight brief with numbers, trends, and anomalies.
+    agent: Insight Analyst
+  - description: >
+      Write a 1-page executive summary + bullet recommendations + suggested follow-up analyses.
+    expected_output: Stakeholder-ready report in Markdown.
+    agent: Report Writer
 process: sequential
+verbose: true
+output_dir: ./outputs/analysis

@@ -1,14 +1,14 @@
-TITLE: Claude Power User & Tool Master Prompt Collection (MPC) - 120+ Prompts
+TITLE: Claude Power User & Tool Master Prompt Collection (MPC) — 19+ Core Prompts
 
 PRICE: $22
 
 DESCRIPTION:
-The advanced Claude prompt library built for people who actually use Projects, Artifacts, and Computer Use.
+A focused Claude prompt library built for people who actually use Projects, Artifacts, and Computer Use.
 
 Stop getting generic output. These prompts are designed around how Claude 4 actually works at a deep level.
 
 Inside:
-• 120+ prompts optimized for Claude's unique strengths
+• 19+ core prompts optimized for Claude's unique strengths (with workflow variants)
 • Artifact creation and iteration frameworks
 • Computer Use / agent scaffolding patterns
 • Long-running Project memory systems

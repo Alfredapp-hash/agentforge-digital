@@ -9,11 +9,12 @@
 - Bonus: How to turn these into sellable products or internal tools
 
 ## Quick Start (CrewAI)
-1. `pip install crewai crewai-tools`
-2. Copy a YAML into your project.
-3. Use a simple loader script (example below) or paste into your Python crew definition.
-4. Set your `XAI_API_KEY` (or other provider).
-5. Run the crew.
+1. `pip install crewai crewai-tools pyyaml python-dotenv`
+2. Copy a YAML from `crews/` into your project (or run from this folder).
+3. **Fast path:** `python crew_loader.py crews/04_marketing_launch_crew.yaml "Your product topic here"`
+4. Or build agents manually from YAML (example below).
+5. Set `XAI_API_KEY` or `OPENAI_API_KEY`.
+6. Run the crew.
 
 Example loader (Python):
 ```python
@@ -31,23 +32,18 @@ print(result)
 ```
 
 ## The 10 Crews
-1. Research Crew
-2. Content Writer Crew
-3. Code Reviewer & Builder Crew
-4. Marketing & Launch Crew
-5. Product Ideator Crew
-6. Customer Insight & Support Crew
-7. Prompt Engineer Crew
-8. Data Analyzer Crew
-9. Learning & Study Tutor Crew
-10. Agent Optimizer (Meta) Crew
+1. Research Crew — [`guides/01_research_crew_guide.md`](guides/01_research_crew_guide.md)
+2. Content Writer Crew — [`guides/02_content_writer_crew_guide.md`](guides/02_content_writer_crew_guide.md)
+3. Code Reviewer & Builder Crew — [`guides/03_code_reviewer_crew_guide.md`](guides/03_code_reviewer_crew_guide.md)
+4. Marketing & Launch Crew — [`guides/04_marketing_launch_crew_guide.md`](guides/04_marketing_launch_crew_guide.md)
+5. Product Ideator Crew — [`guides/05_product_ideator_crew_guide.md`](guides/05_product_ideator_crew_guide.md)
+6. Customer Insight & Support Crew — [`guides/06_customer_insight_crew_guide.md`](guides/06_customer_insight_crew_guide.md)
+7. Prompt Engineer Crew — [`guides/07_prompt_engineer_crew_guide.md`](guides/07_prompt_engineer_crew_guide.md)
+8. Data Analyzer Crew — [`guides/08_data_analyzer_crew_guide.md`](guides/08_data_analyzer_crew_guide.md)
+9. Learning & Study Tutor Crew — [`guides/09_learning_tutor_crew_guide.md`](guides/09_learning_tutor_crew_guide.md)
+10. Agent Optimizer (Meta) Crew — [`guides/10_agent_optimizer_crew_guide.md`](guides/10_agent_optimizer_crew_guide.md)
 
-Each has its own `guide-*.md` with:
-- When to use it
-- Exact YAML
-- How to customize for your tools/models
-- Example inputs/outputs
-- Pro tips for better results with Grok/Claude
+Each guide includes: setup command, input templates, outputs, customization, chains, examples, and runtime estimates.
 
 ## Free Marketing Repo Strategy
 Fork or create a public GitHub repo called `mcp-starter-crews`.
@@ -64,10 +60,3 @@ Build time: 2-3 days as described. High perceived value for indie hackers and ag
 
 ---
 Generated as part of AgentForge product suite.
-```
-
-Now, to complete, I should create at least short guides for a few and note the pattern.
-
-For efficiency, create a template guide and a couple examples, then say the rest follow the same pattern. But user said "build all", so try to cover.
-
-Since time, create the main README with all, and short guides for all by making them concise.

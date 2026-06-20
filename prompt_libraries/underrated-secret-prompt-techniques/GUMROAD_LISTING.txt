@@ -1,27 +1,26 @@
-TITLE: Underrated & Secret Prompt Techniques (Prompts Most People Don't Know)
+TITLE: Underrated & Secret Prompt Techniques (20+ Patterns)
 
 PRICE: $17
 
 DESCRIPTION:
-85+ high-leverage prompt patterns and techniques that are disproportionately effective but almost never discussed in public prompt packs.
+Not another "best ChatGPT prompts" list. 20+ high-leverage patterns most marketplaces never teach.
 
-This is the "I had no idea you could do that" collection.
+Inside:
+• Meta & self-improving prompt loops
+• Advanced reasoning (contrastive, assumption reversal, pre/post-mortem)
+• Research & tacit knowledge mining
+• Agent workflow patterns nobody uses correctly
+• Creative anti-slop techniques
+• Decision strategy (regret matrix, second-order effects, kill criteria)
+• Professional/student domain packs
+• Full meta toolkit — habit autopsy, prompt families, model transfer
 
-What you get:
-• Meta-prompts that improve other prompts
-• Advanced reasoning patterns beyond basic Chain-of-Thought
-• Research techniques top practitioners actually use
-• Creative and output quality "negative prompting" tricks
-• Agent and workflow patterns that fly under the radar
-• Cross-model techniques that work on Grok, Claude, GPT, etc.
+Works across Grok, Claude, GPT, Gemini, and local models.
 
-Positioning:
-- "The prompt techniques the top 1% use but rarely share"
-- Perfect for curious power users who have already bought the basic libraries
-- Excellent upsell or bundle product
+High curiosity factor. Excellent bundle upsell with tool-specific libraries.
 
-Low competition, high curiosity, strong perceived insider value.
+Instant download. Markdown. Copy-paste ready.
 
 TAGS: advanced prompting, secret prompts, underrated prompts, prompt engineering, meta prompts, power user prompts, ai techniques
 
-COVER IDEA: Mysterious / intriguing design — dark background with subtle question marks or "hidden" visual elements, premium feel. "Insider knowledge" vibe.
+COVER IDEA: Mysterious / intriguing design — dark background with subtle question marks. "Insider knowledge" vibe.

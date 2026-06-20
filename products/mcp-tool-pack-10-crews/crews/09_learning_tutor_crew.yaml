@@ -1,10 +1,33 @@
 name: Learning & Study Tutor Crew
+description: Structured learning paths, quizzes, and explanations for complex topics.
 agents:
   - role: Curriculum Designer
-  - role: Explainer
-  - role: Quiz & Practice Generator
+    goal: Break topics into learnable modules with prerequisites and outcomes.
+    backstory: Instructional designer who respects cognitive load and spaced repetition.
+    verbose: true
+  - role: Socratic Tutor
+    goal: Teach through questions, examples, and misconceptions — not lectures.
+    backstory: Patient tutor who adapts explanations until the student actually gets it.
+    verbose: true
+  - role: Assessment Builder
+    goal: Create practice questions, rubrics, and self-check exercises with answer keys.
+    backstory: Exam prep specialist focused on application, not memorization.
 tasks:
-  - Break down complex topics into learnable modules.
-  - Explain concepts with analogies and examples.
-  - Create quizzes, flashcards, and spaced repetition plans.
+  - description: >
+      Design a learning path for the topic — 4–6 modules, each with objective, prerequisites,
+      key concepts, and estimated study time.
+    expected_output: Curriculum outline with module breakdown.
+    agent: Curriculum Designer
+  - description: >
+      Write the core lesson for module 1 using Socratic method — explain, example, check understanding,
+      common mistake, mini exercise.
+    expected_output: Lesson 1 content in Markdown.
+    agent: Socratic Tutor
+  - description: >
+      Create 10 practice questions (mix of recall, application, scenario) with detailed answer key
+      and rubric for open-ended items.
+    expected_output: Practice set + answer key.
+    agent: Assessment Builder
 process: sequential
+verbose: true
+output_dir: ./outputs/learning

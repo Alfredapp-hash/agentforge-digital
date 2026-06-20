@@ -1,6 +1,6 @@
 # Claude Power User & Tool Master Prompt Collection (MPC)
 
-**120+ Advanced Prompts for Claude 4, Projects, Artifacts, Computer Use & Agent Workflows**
+**19+ Advanced Prompts for Claude 4, Projects, Artifacts, Computer Use & Agent Workflows**
 
 This is the Master Prompt Collection (MPC) for people who treat Claude like a senior collaborator rather than a chatbot.
 
@@ -136,6 +136,194 @@ Topic: [TOPIC]
 - Prompt that takes your existing Claude conversation and turns it into a reusable Project template.
 
 (Full versions included in the expanded pack)
+
+---
+
+## Section 5: Claude for Code & Technical Work
+
+**Diff-First Code Review**
+```
+Review this code as a staff engineer. Do not rewrite everything.
+
+Output format:
+P0 (must fix): ...
+P1 (should fix): ...
+P2 (nice to have): ...
+One simplification that removes complexity:
+
+Code:
+[PASTE]
+```
+
+**Test Case Generator (behavior-focused)**
+```
+For function/module: [NAME]
+
+Generate tests that cover:
+- Happy path
+- 3 edge cases most juniors miss
+- One failure mode that would cause production incident
+
+Use [FRAMEWORK]. Name tests descriptively. No implementation yet — tests only.
+```
+
+**Refactor Proposal (minimal diff)**
+```
+Goal: [REFACTOR GOAL]
+Constraints: no behavior change, keep public API
+
+Propose the smallest refactor sequence (max 3 steps) with rationale per step.
+Show only the critical before/after snippets.
+```
+
+---
+
+## Section 6: Claude for Writing & Documents
+
+**Legal-Adjacent Professional Tone (not advice)**
+```
+Rewrite for professional audience. Tone: precise, neutral, no hype.
+
+Rules:
+- Short sentences for complex ideas
+- Active voice where possible
+- Flag any claim that needs citation with [CITE]
+- Do not add legal conclusions — analysis structure only
+
+Draft:
+[PASTE]
+```
+
+**Long Document Restructure**
+```
+This document is too long and repetitive.
+
+1. Extract the 5 core ideas.
+2. Propose a new outline (max 8 sections).
+3. Rewrite section 1 only as a sample of the new voice/structure.
+
+Document:
+[PASTE OR SUMMARIZE]
+```
+
+---
+
+## Section 7: Claude Projects — Templates
+
+**New Project Charter Generator**
+```
+Create a Claude Project charter for: [PROJECT NAME]
+
+Include:
+- Mission (1 sentence)
+- Success criteria (3 measurable)
+- Non-goals (3)
+- Standing assumptions
+- Decision log template
+- Weekly review questions
+
+Format as Markdown to paste into Project instructions.
+```
+
+**Conversation → Reusable Template**
+```
+Analyze our conversation. Extract a reusable Project template:
+
+1. System instructions (what Claude should always do)
+2. User message patterns that work well
+3. Artifact types we used
+4. Anti-patterns to avoid
+
+Output ready to paste into a new Claude Project.
+```
+
+---
+
+## Section 8: Sales & Marketing (Claude)
+
+**Gumroad Description (conversion-focused)**
+```
+Product: [NAME] at $[PRICE]
+Buyer: [AVATAR]
+Inside: [BULLET LIST]
+
+Write description:
+- Hook (pain → promise)
+- What's inside (specific, not vague)
+- Who it's for / not for
+- Social proof placeholder line
+- CTA with urgency (ethical)
+
+Max 400 words.
+```
+
+**Email Sequence (5 emails)**
+```
+Product: [NAME]
+Launch price: $[X]
+Audience: [WHO]
+
+Write 5 emails: subject + body each.
+Day 0 announce, Day 1 value, Day 2 scarcity, Day 3 story, Day 4 last chance.
+Tone: direct, no corporate speak.
+```
+
+---
+
+## Section 9: Full Meta-Prompt Pack
+
+**Prompt Habit Analyzer**
+```
+Here are 10 prompts I've used recently:
+[PASTE]
+
+Analyze my prompting habits:
+- 3 patterns that limit output quality
+- 3 high-leverage changes
+- 1 "power prompt" I should adopt as default system prompt
+```
+
+**One Prompt → Eight Variations**
+```
+Base prompt:
+[PASTE]
+
+Generate 8 variations optimized for:
+1. Speed/cheap model
+2. Maximum depth
+3. Creative output
+4. Structured JSON
+5. Teaching/explaining
+6. Adversarial red-team
+7. Executive summary only
+8. Step-by-step checklist output
+```
+
+**Reverse-Engineer Excellence**
+```
+This output was unusually good:
+[PASTE OUTPUT]
+
+Reverse-engineer:
+- What instructions likely produced this?
+- What constraints were implied?
+- Reconstruct the prompt that would reliably reproduce this quality.
+```
+
+---
+
+## Section 10: Quick Index
+
+| Section | Use when |
+|---------|----------|
+| 1 | Default Claude behavior |
+| 2 | Computer use / tools |
+| 3 | Long Projects |
+| 4 | Quality loops |
+| 5–6 | Code & docs |
+| 7 | New Projects |
+| 8 | Selling products |
+| 9 | Improving your prompting |
 
 ---
 

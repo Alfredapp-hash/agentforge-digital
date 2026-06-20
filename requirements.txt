@@ -13,3 +13,5 @@ requests
 fpdf2
 python-slugify
 python-dotenv
+pydantic>=2.0
+PyYAML>=6.0

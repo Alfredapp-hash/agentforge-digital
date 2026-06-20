@@ -1,10 +1,33 @@
 name: Product Ideator Crew
+description: Generate and validate sellable digital product ideas for solo builders.
 agents:
-  - role: Trend Spotter
-  - role: Problem Validator
-  - role: Idea Synthesizer
+  - role: Opportunity Scanner
+    goal: Find 5–10 micro-product ideas with fast build time and clear buyer intent.
+    backstory: Indie product scout obsessed with Gumroad, PromptBase, and Notion template marketplaces.
+    verbose: true
+  - role: Feasibility Analyst
+    goal: Score each idea on build time, competition, margin, and refund risk.
+    backstory: Ruthless analyst who kills pretty ideas that won't sell.
+    verbose: true
+  - role: Product Architect
+    goal: Turn the top 1–2 ideas into concrete product specs — format, outline, price, launch angle.
+    backstory: Product manager who ships MVPs in days, not months.
 tasks:
-  - Scan for emerging problems and opportunities.
-  - Validate demand and competition.
-  - Generate and score 10 product ideas with MVP scopes.
+  - description: >
+      Scan for digital product opportunities in the given niche. Prioritize prompt packs,
+      Notion templates, crew YAML packs, playbooks, and tool-specific libraries ($9–47).
+    expected_output: List of 5–10 ideas with one-line pain statement and rough price each.
+    agent: Opportunity Scanner
+  - description: >
+      Score every idea 1–10 on Build Speed, Demand Signal, Competition, Margin, Refund Risk.
+      Mark GO or NO-GO. Pick top 2.
+    expected_output: Scored matrix with GO/NO-GO and rationale for top picks.
+    agent: Feasibility Analyst
+  - description: >
+      For the #1 idea, produce a full product spec — title, TOC, deliverable format,
+      suggested price, Gumroad tags, and first-week marketing hook.
+    expected_output: Product spec document ready for Creator crew input.
+    agent: Product Architect
 process: sequential
+verbose: true
+output_dir: ./outputs/ideation

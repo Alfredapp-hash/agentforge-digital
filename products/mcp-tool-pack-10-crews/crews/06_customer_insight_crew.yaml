@@ -1,10 +1,32 @@
 name: Customer Insight & Support Crew
+description: Mine feedback, reviews, and support signals into actionable product improvements.
 agents:
-  - role: Interviewer
-  - role: Synthesizer
-  - role: FAQ & Support Writer
+  - role: Feedback Synthesizer
+    goal: Extract themes, pain points, and feature requests from customer messages and reviews.
+    backstory: CX lead who turns messy feedback into prioritized insights.
+    verbose: true
+  - role: Objection Handler
+    goal: Draft responses to common objections and support replies that reduce refunds.
+    backstory: Support writer who saves sales with clear, empathetic, specific answers.
+    verbose: true
+  - role: Product Improver
+    goal: Recommend product updates, FAQ additions, and bonus content based on feedback patterns.
+    backstory: Product owner who ships v1.1 updates that increase reviews and reduce churn.
 tasks:
-  - Simulate customer interviews or analyze feedback.
-  - Extract insights and pain points.
-  - Generate support docs, FAQs, and response templates.
+  - description: >
+      Analyze the provided feedback (reviews, emails, DMs, Reddit comments). Cluster into themes,
+      rank by frequency and revenue impact, quote representative snippets.
+    expected_output: Feedback synthesis report with top 5 themes and severity.
+    agent: Feedback Synthesizer
+  - description: >
+      For the top 3 objections or confusion points, write copy-paste support replies and
+      FAQ entries that preempt refunds.
+    expected_output: Support playbook with 3+ ready responses and FAQ blocks.
+    agent: Objection Handler
+  - description: >
+      Recommend 3–5 product improvements (content additions, clarifications, bonuses) ranked by effort vs. impact.
+    expected_output: Prioritized improvement backlog with implementation notes.
+    agent: Product Improver
 process: sequential
+verbose: true
+output_dir: ./outputs/customer_insight

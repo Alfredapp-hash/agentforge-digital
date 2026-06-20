@@ -9,9 +9,8 @@ from typing import Optional, Dict, Any, List
 
 import requests
 from pydantic import BaseModel, Field
-from crewai import Agent, Task, Crew, Process
+from crewai import Agent, Task, Crew, Process, LLM
 from crewai.tools import tool
-from langchain_openai import ChatOpenAI
 import streamlit as st
 
 # DB layer (from the zip sources, enhanced)
@@ -45,7 +44,73 @@ XAI_API_KEY = os.getenv("XAI_API_KEY") or ""
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or ""
 GUMROAD_TOKEN = os.getenv("GUMROAD_ACCESS_TOKEN") or ""
 
-# ==================== COST TRACKING ====================
+_PLACEHOLDER_KEYS = {"your_xai_key_here", "your_gumroad_token_here", "sk-dummy", ""}
+
+
+def _session_get(key: str, default=None):
+    """Read Streamlit session state when running in the UI; safe in headless mode."""
+    try:
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+        if get_script_run_ctx() is None:
+            return default
+        import streamlit as st
+        val = st.session_state.get(key)
+        if val:
+            return val
+    except Exception:
+        pass
+    return default
+
+
+def _valid_key(key: Optional[str]) -> bool:
+    return bool(key and key not in _PLACEHOLDER_KEYS)
+
+
+def get_llm(temperature: float = 0.65, provider: str = None, model: str = None):
+    """Flexible LLM factory. xAI via OpenAI-compatible API; CrewAI native LLM."""
+    xai_key = _session_get("xai_key") or XAI_API_KEY
+    oai_key = _session_get("openai_key") or OPENAI_API_KEY
+
+    provider = (provider or _session_get("ai_provider", "xai")).lower()
+    model = model or _session_get("ai_model") or _session_get("xai_model")
+    max_tokens = _session_get("max_tokens", 3000)
+
+    if provider in ("xai", "grok") and _valid_key(xai_key):
+        return LLM(
+            model=model or os.getenv("XAI_MODEL", "grok-4"),
+            api_key=xai_key,
+            base_url="https://api.x.ai/v1",
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+
+    if provider == "openai" and _valid_key(oai_key):
+        return LLM(
+            model=model or _session_get("openai_model", "gpt-4o-mini"),
+            api_key=oai_key,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+
+    if _valid_key(xai_key):
+        return LLM(
+            model=model or os.getenv("XAI_MODEL", "grok-4"),
+            api_key=xai_key,
+            base_url="https://api.x.ai/v1",
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+    if _valid_key(oai_key):
+        return LLM(
+            model=model or "gpt-4o-mini",
+            api_key=oai_key,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+
+    raise ValueError(
+        "No AI API key configured. Set XAI_API_KEY in .env or paste your key in Settings."
+    )
 
 def estimate_cost_usd(text: str, is_output: bool = True) -> float:
     """Very rough cost estimator for xAI/Grok (conservative for profitability math)."""
@@ -77,46 +142,7 @@ class ReviewResult(BaseModel):
     decision: str = Field(..., pattern="^(GO|NO-GO)$")
     improvements: List[str] = Field(default_factory=list)
 
-def get_llm(temperature: float = 0.65, provider: str = None, model: str = None):
-    """Flexible LLM factory. xAI is the primary recommended connector."""
-    # Prefer session state keys (from Settings tab) over module globals
-    xai_key = st.session_state.get("xai_key") or XAI_API_KEY
-    oai_key = st.session_state.get("openai_key") or OPENAI_API_KEY
-
-    provider = (provider or st.session_state.get("ai_provider", "xai")).lower()
-    model = model or st.session_state.get("ai_model") or st.session_state.get("xai_model")
-
-    if provider in ("xai", "grok") and xai_key:
-        return ChatOpenAI(
-            model=model or "grok-4.3",
-            openai_api_key=xai_key,
-            openai_api_base="https://api.x.ai/v1",
-            temperature=temperature,
-            max_tokens=st.session_state.get("max_tokens", 3000),
-        )
-
-    if provider == "openai" and oai_key:
-        return ChatOpenAI(
-            model=model or st.session_state.get("openai_model", "gpt-4o-mini"),
-            openai_api_key=oai_key,
-            temperature=temperature,
-            max_tokens=st.session_state.get("max_tokens", 3000),
-        )
-
-    # Fallback preferring xAI
-    if xai_key:
-        return ChatOpenAI(
-            model=model or "grok-4.3",
-            openai_api_key=xai_key,
-            openai_api_base="https://api.x.ai/v1",
-            temperature=temperature,
-        )
-    if oai_key:
-        return ChatOpenAI(model=model or "gpt-4o-mini", openai_api_key=oai_key, temperature=temperature)
-
-    return ChatOpenAI(model="gpt-3.5-turbo", openai_api_key="sk-dummy")
-
-# Tools
+# ==================== TOOLS ====================
 @tool("Web Search")
 def web_search(query: str) -> str:
     """Market research, trends, competitors, pricing, keywords."""
@@ -201,7 +227,7 @@ def build_strategist_agent(llm):
 
 
 def build_autonomous_tasks(main_topic: Optional[str], agents):
-    niche_scout, researcher, content_producer, listing_specialist, quality_reviewer = agents
+    niche_scout, researcher, content_producer, listing_specialist, quality_reviewer, marketing_specialist = agents
 
     tasks: List[Task] = []
 
@@ -617,7 +643,7 @@ Run this package, post the assets, and the product should start converting.
     ad_copy = f"""# Ad Copy & Promotion Snippets (for paid or organic boost)
 
 Google/Facebook Ad Headline Options:
-1. "150+ Grok Prompts That Actually Work (Power User Pack)"
+1. "20+ Grok Prompts That Actually Work (Power User Pack)"
 2. "Stop Wasting Time on Bad AI Output - Get These Secret Prompts"
 3. "The AI Tool Library Pros Use (Save 10+ Hours/Week)"
 
@@ -838,20 +864,32 @@ def get_status_badge(is_connected: bool, label: str = "") -> str:
 def test_llm_connection(provider: str = "xai") -> tuple[bool, str]:
     """Lightweight test for AI connectors."""
     try:
-        llm = get_llm()
-        # Very cheap test prompt
-        response = llm.invoke("Respond with exactly: 'Connection OK'")
-        content = str(response.content if hasattr(response, 'content') else response)[:120]
-        return True, content
+        if provider in ("xai", "grok"):
+            model = os.getenv("XAI_MODEL") or _session_get("ai_model", "grok-4")
+            result, err = call_xai_direct(
+                [{"role": "user", "content": "Respond with exactly: Connection OK"}],
+                model=model,
+            )
+            if err:
+                return False, err
+            return True, str(result)[:120]
+
+        llm = get_llm(provider=provider)
+        response = llm.call(
+            messages=[{"role": "user", "content": "Respond with exactly: Connection OK"}]
+        )
+        return True, str(response)[:120]
     except Exception as e:
         return False, str(e)[:200]
 
 
-def call_xai_direct(input_list, model="grok-4.3"):
+def call_xai_direct(input_list, model=None):
     """Direct call to xAI Responses API, matching the user's curl example."""
-    key = st.session_state.get("xai_key") or os.getenv("XAI_API_KEY")
-    if not key:
-        return None, "No XAI_API_KEY found. Set it in Settings or environment."
+    key = os.getenv("XAI_API_KEY") or _session_get("xai_key")
+    if not _valid_key(key):
+        return None, "No XAI_API_KEY found. Set it in .env or Settings."
+
+    model = model or os.getenv("XAI_MODEL") or _session_get("ai_model", "grok-4")
 
     headers = {
         "Content-Type": "application/json",
@@ -1279,6 +1317,7 @@ def main():
         max_t = st.slider("Max Tokens", 512, 8192, st.session_state.get("max_tokens", 3000), 128, key="settings_maxt")
         price = st.number_input("Default Price ($)", 5.0, 49.0, st.session_state.get("default_price", 12.0), 1.0, key="settings_price")
         gum = st.text_input("GUMROAD_ACCESS_TOKEN", value=GUMROAD_TOKEN or st.session_state.get("gumroad_token", ""), type="password", key="settings_gum")
+        st.caption("Get token: Gumroad → Settings → Advanced → Applications → create app → Generate access token ([open Advanced settings](https://gumroad.com/settings/advanced))")
 
         if st.button("💾 Save & Apply All", type="primary", use_container_width=True):
             if xai_key:

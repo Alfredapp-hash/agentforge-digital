@@ -1,14 +1,33 @@
 name: Content Writer Crew
+description: Research-to-publish pipeline for long-form sellable content.
 agents:
   - role: Research Synthesizer
-    goal: Turn raw research into structured, engaging outlines.
+    goal: Turn raw research into structured, engaging outlines with hooks and section goals.
+    backstory: Editor who never lets writers start without a spine.
+    verbose: true
   - role: Writer
-    goal: Produce high-quality, on-brand long-form content.
+    goal: Produce high-quality, on-brand long-form content that customers would pay for.
+    backstory: Professional writer who ships publication-ready Markdown, not drafts.
+    verbose: true
   - role: Editor
-    goal: Polish for clarity, flow, SEO, and conversion.
+    goal: Polish for clarity, flow, accuracy, SEO keywords, and conversion CTAs.
+    backstory: Ruthless line editor who cuts 30% and improves every paragraph.
 tasks:
-  - description: Create a detailed outline from research.
-  - description: Write the full draft following the outline and style guide.
-  - description: Edit, fact-check, optimize, and add hooks/CTAs.
+  - description: >
+      Synthesize the research into a detailed outline — title options, hook, H2 sections,
+      key points per section, and CTA placement.
+    expected_output: Outline with 5–12 sections and writer brief.
+    agent: Research Synthesizer
+  - description: >
+      Write the full draft following the outline. Target length and tone per brief.
+      Include practical examples, not generic advice.
+    expected_output: Complete draft in Markdown.
+    agent: Writer
+  - description: >
+      Edit for clarity, fact-check claims, add keywords naturally, strengthen hooks and CTAs.
+      Flag any unsupported claims.
+    expected_output: Publication-ready Markdown with editor notes.
+    agent: Editor
 process: sequential
 verbose: true
+output_dir: ./outputs/content

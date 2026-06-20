@@ -1,0 +1,31 @@
+TITLE: MCP Tool Pack — 10 Starter Crews for CrewAI · $47
+
+PRICE: 47
+
+DESCRIPTION:
+Stop rebuilding agent crews from scratch. Get 10 production-ready CrewAI configurations with full agent definitions, task specs, and one-page guides.
+
+What's inside:
+• 10 complete YAML crew configs with goals, backstories, and expected outputs
+• Step-by-step guide for every crew
+• `crew_loader.py` — run any crew from CLI in one command
+• Master README with install, chaining, and monetization tips
+• FREE_REPO_README for public GitHub funnel
+
+Crews: Research, Content Writer, Code Reviewer, Marketing & Launch, Product Ideator, Customer Insight, Prompt Engineer, Data Analyzer, Learning Tutor, Agent Optimizer (meta).
+
+Optimized for Grok, Claude, and OpenAI-compatible APIs.
+
+Perfect for:
+- Solo builders shipping agent products
+- Indie hackers who want working crews today
+- Teams prototyping multi-agent workflows
+- Anyone tired of blank-slate CrewAI setup
+
+Instant download. Copy, configure your API key, run.
+
+Pairs perfectly with the Agent Ops Dashboard (Notion) and Agent Stack for Solo Builders.
+
+TAGS: crewai, ai agents, mcp, agent crews, yaml configs, automation, indie hacker, ai tools, multi-agent, starter pack
+
+COVER IDEA: Grid of 10 crew icons on dark blue gradient. Title: "10 Starter Crews". Technical, clean, Forge branding.

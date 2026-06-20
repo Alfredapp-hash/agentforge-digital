@@ -1,0 +1,8 @@
+# Best Gumroad Variant
+
+Use **Variant A** (Control & audit trail).
+
+Title: ClearTrace Privacy Ops Playbook + Agent Builder Kit
+Price: $49
+Include GitHub link prominently in description.
+Attach zip from `products/clear-trace.zip`.

@@ -1,10 +1,33 @@
 name: Prompt Engineer Crew
+description: Design, test, and refine high-leverage prompts and MPC chains.
 agents:
-  - role: Prompt Researcher
   - role: Prompt Architect
-  - role: Tester & Optimizer
+    goal: Design structured prompts with constraints, output formats, and reasoning steps.
+    backstory: Prompt engineer who builds prompts that survive model updates and tool changes.
+    verbose: true
+  - role: Prompt Tester
+    goal: Stress-test prompts with edge cases and score output quality 1–10.
+    backstory: QA specialist who breaks prompts before customers do.
+    verbose: true
+  - role: MPC Curator
+    goal: Package the best prompts into categorized libraries with usage instructions.
+    backstory: Editor who turns raw prompts into sellable Master Prompt Collections.
 tasks:
-  - Find and adapt best prompting techniques.
-  - Design advanced multi-step and tool-use prompts.
-  - Test, score, and iterate on prompt performance.
+  - description: >
+      Design 5–8 production-grade prompts for the given use case. Each must include
+      role, constraints, output format, and one advanced technique (self-critique, multi-path, etc.).
+    expected_output: Prompt pack draft with numbered prompts and bracket variables.
+    agent: Prompt Architect
+  - description: >
+      Run mental simulations on each prompt — edge cases, vague inputs, adversarial users.
+      Score 1–10 and list specific fixes for anything below 8.
+    expected_output: Test report with scores and revised prompts where needed.
+    agent: Prompt Tester
+  - description: >
+      Organize final prompts into categories, add usage instructions, variation templates,
+      and a one-page "how to get 10x value" guide.
+    expected_output: Customer-ready MPC document in Markdown.
+    agent: MPC Curator
 process: sequential
+verbose: true
+output_dir: ./outputs/prompts

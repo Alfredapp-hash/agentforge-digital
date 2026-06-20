@@ -1,10 +1,33 @@
 name: Agent Optimizer (Meta) Crew
+description: Audit agent performance and improve prompts, tools, and architecture.
 agents:
   - role: Performance Auditor
+    goal: Analyze run logs for failure modes, cost spikes, and quality regressions.
+    backstory: SRE for AI agents — obsessed with reliability per dollar.
+    verbose: true
   - role: Prompt Refiner
+    goal: Rewrite weak prompts and task descriptions with measurable improvements.
+    backstory: Prompt surgeon who cuts token waste without losing quality.
+    verbose: true
   - role: Architecture Advisor
+    goal: Recommend crew structure changes — merge/split agents, reorder tasks, add tools.
+    backstory: Systems thinker who has refactored dozens of multi-agent workflows.
 tasks:
-  - Analyze past agent runs for bottlenecks and failures.
-  - Suggest improved prompts, tools, and process changes.
-  - Recommend new agent roles or crew structures for better ROI.
+  - description: >
+      Audit the provided run history or crew config. Identify top 3 failure modes,
+      cost drivers, and quality bottlenecks with evidence from logs.
+    expected_output: Performance audit report with severity-ranked issues.
+    agent: Performance Auditor
+  - description: >
+      Rewrite the weakest agent prompts and task expected_outputs. Target 20–40% token reduction
+      while improving clarity. Show before/after.
+    expected_output: Revised prompt pack with change log.
+    agent: Prompt Refiner
+  - description: >
+      Recommend architecture changes — agent merges, new tools, task reordering, or model routing.
+      Include expected impact on cost and quality.
+    expected_output: Architecture recommendation memo with implementation steps.
+    agent: Architecture Advisor
 process: sequential
+verbose: true
+output_dir: ./outputs/optimizer

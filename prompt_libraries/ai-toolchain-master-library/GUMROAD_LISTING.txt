@@ -1,0 +1,31 @@
+TITLE: AI Toolchain Master Prompt Library — Cursor, Claude, Grok & More
+
+PRICE: 24
+
+DESCRIPTION:
+You already pay for Cursor, Claude, Grok, and Perplexity. This library makes them actually worth it.
+
+Inside:
+• 12+ toolchain workflows across Cursor, Claude, Grok, and Perplexity
+• Cursor Composer & rules-file patterns
+• Claude Projects & Artifacts workflows
+• Multi-tool handoff patterns (Cursor → Claude, Grok → research stack)
+• Perplexity / research synthesis chains
+• "Make this tool useful" meta-templates for any new AI tool
+• Real workflows — not generic chat prompts
+
+Stop treating every tool like a chatbot. These are the prompt layers power users run in 2026.
+
+Perfect for:
+- Developers using Cursor or Windsurf
+- Claude Projects power users
+- Builders mixing Grok + other tools in one stack
+- Anyone frustrated with mediocre cross-tool results
+
+Instant download. Markdown — copy-paste ready.
+
+Bundle with Grok Library + Claude MPC for maximum AOV.
+
+TAGS: cursor prompts, claude projects, ai toolchain, prompt library, windsurf, perplexity, developer prompts, ai workflow, multi-tool ai
+
+COVER IDEA: Connected nodes showing Cursor + Claude + Grok logos (stylized). Dark tech aesthetic. "Toolchain Master" headline.

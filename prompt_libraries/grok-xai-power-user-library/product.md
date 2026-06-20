@@ -1,6 +1,6 @@
 # Grok & xAI Power User Prompt Library
 
-**150+ Battle-Tested Prompts for Grok 4.3, Advanced Reasoning, Tool Use & Autonomous Workflows**
+**20+ Battle-Tested Prompts (+ Chain Variants) for Grok 4.3, Advanced Reasoning, Tool Use & Autonomous Workflows**
 
 This collection contains the exact prompts, chains, and templates that power users, researchers, and builders use to get dramatically better results from xAI models.
 
@@ -193,6 +193,150 @@ For each prompt:
 
 Output as a numbered list with titles.
 ```
+
+---
+
+## Category 6: Coding & Builder Prompts (Grok for dev work)
+
+### 6.1 Architecture First, Code Second
+```
+Before writing any code for [FEATURE]:
+
+1. State assumptions and non-goals.
+2. Propose 2 architectures — minimal vs. scalable.
+3. Pick one with explicit trade-offs.
+4. Then implement the smallest working version only.
+
+Stack: [STACK]
+Constraints: [TESTS REQUIRED? DEADLINE?]
+```
+
+### 6.2 Debug Like a Senior Engineer
+```
+Symptom: [ERROR / BEHAVIOR]
+Context: [STACK, RECENT CHANGES]
+
+Do NOT guess fixes immediately.
+
+1. List 5 plausible root causes ranked by likelihood.
+2. For top 2, describe the smallest test to confirm/deny each.
+3. Only then propose a fix with explanation of why others were ruled out.
+```
+
+### 6.3 PR Description Generator
+```
+Turn this diff/summary into a PR description:
+
+Summary (what & why):
+Test plan:
+Risk / rollback:
+Screenshots or logs needed:
+
+Diff/summary:
+[PASTE]
+```
+
+---
+
+## Category 7: Business & Product Prompts
+
+### 7.1 Gumroad Listing Optimizer
+```
+Product: [NAME]
+Audience: [WHO]
+Price: $[X]
+Deliverable: [WHAT'S IN THE ZIP]
+
+Write:
+1. Title (max 80 chars, curiosity + specificity)
+2. Above-the-fold hook (2 sentences)
+3. Bullet list of what's inside (no fluff)
+4. Objection handling (why not free / why now)
+5. 8 Gumroad tags
+```
+
+### 7.2 Competitive Wedge Finder
+```
+Category: [DIGITAL PRODUCT TYPE]
+My angle: [UNIQUE POSITION]
+
+Find the positioning wedge — what angle is underserved on Gumroad/GPT store/Notion marketplace?
+Output: 3 wedge options with example titles and price tests.
+```
+
+---
+
+## Category 8: Legal & Professional Adjacent (with disclaimer)
+
+*Not legal advice. Productivity prompts for students and professionals.*
+
+### 8.1 IRAC Issue Spotter
+```
+Fact pattern: [PASTE FACTS]
+Jurisdiction/course: [COURSE OR GENERAL]
+
+1. Identify all colorable issues (don't resolve yet).
+2. For each issue: rule sketch, key facts, both sides' strongest argument.
+3. Flag ambiguities needing research.
+
+Format as study aid, not advice for real cases.
+```
+
+### 8.2 Professional Memo Skeleton
+```
+Draft a structured memo skeleton for: [TOPIC]
+Audience: [SUPERVISOR / CLIENT / INTERNAL]
+Tone: professional, concise
+
+Sections: Question Presented, Brief Answer, Facts, Analysis (IRAC per issue), Recommendation.
+Leave [CITE NEEDED] placeholders for citations.
+```
+
+---
+
+## Category 9: Multi-Turn Grok Sessions
+
+### 9.1 Session Memory Anchor
+```
+At the start of a long session, output and maintain:
+
+PROJECT: [NAME]
+GOAL: [ONE SENTENCE]
+DECISIONS LOG: (append only when user confirms)
+OPEN QUESTIONS:
+CURRENT PHASE:
+
+After every 5 exchanges, print a 3-line status block without being asked.
+```
+
+### 9.2 Handoff to Another Model
+```
+Summarize this entire conversation for handoff to Claude/Cursor.
+
+Include:
+- Goal and constraints
+- Decisions made (with rationale)
+- Code/files referenced
+- What NOT to redo
+- Exact next task
+
+Optimize for paste into another tool's context window.
+```
+
+---
+
+## Category 10: Quick Reference Index
+
+| # | Prompt | Best for |
+|---|--------|----------|
+| 1.2 | Grok Personality + Precision | Daily driver |
+| 2.1 | Self-Consistency with Critique | Hard decisions |
+| 3.2 | Autonomous Agent MPC | Multi-step tasks |
+| 4.2 | What Experts Actually Do | Research products |
+| 5.2 | Recursive Improvement | Anything important |
+| 6.2 | Debug Like Senior | Coding |
+| 7.1 | Gumroad Optimizer | Listing copy |
+| 8.1 | IRAC Issue Spotter | Law study |
 
 ---
 

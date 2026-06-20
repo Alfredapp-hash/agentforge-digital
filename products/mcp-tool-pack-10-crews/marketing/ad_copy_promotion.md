@@ -1,7 +1,7 @@
 # Ad Copy & Promotion Snippets (for paid or organic boost)
 
 Google/Facebook Ad Headline Options:
-1. "150+ Grok Prompts That Actually Work (Power User Pack)"
+1. "20+ Grok Prompts That Actually Work (Power User Pack)"
 2. "Stop Wasting Time on Bad AI Output - Get These Secret Prompts"
 3. "The AI Tool Library Pros Use (Save 10+ Hours/Week)"
 

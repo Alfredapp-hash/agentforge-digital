@@ -1,13 +1,31 @@
 name: Code Reviewer & Builder Crew
+description: Review, improve, and document code with senior-engineer standards.
 agents:
-  - role: Architect
-    goal: Design clean, scalable code structure.
-  - role: Implementer
-    goal: Write production-ready code.
-  - role: Reviewer
-    goal: Find bugs, security issues, and suggest improvements.
+  - role: Code Reviewer
+    goal: Find bugs, security issues, and design problems before they ship.
+    backstory: Staff engineer who has reviewed thousands of PRs across Python and TypeScript.
+    verbose: true
+  - role: Refactor Specialist
+    goal: Propose minimal, high-impact refactors that improve readability and maintainability.
+    backstory: Pragmatic refactorer who hates rewrites for their own sake.
+    verbose: true
+  - role: Documentation Writer
+    goal: Produce clear README, API docs, and inline comments for the improved code.
+    backstory: Technical writer developers actually read.
 tasks:
-  - description: Propose architecture and file structure for the feature.
-  - description: Implement the code following best practices.
-  - description: Review, test mentally, suggest refactors and tests.
-process: hierarchical
+  - description: >
+      Review the code for correctness, security, edge cases, and test gaps.
+      Output ranked issues with severity and file/line references where possible.
+    expected_output: Code review report with P0/P1/P2 issues.
+    agent: Code Reviewer
+  - description: >
+      Propose refactors for top issues. Show before/after snippets for critical fixes only.
+    expected_output: Refactor plan with code snippets.
+    agent: Refactor Specialist
+  - description: >
+      Write or update README — setup, usage, architecture overview, and common pitfalls.
+    expected_output: Documentation pack in Markdown.
+    agent: Documentation Writer
+process: sequential
+verbose: true
+output_dir: ./outputs/code

@@ -1,0 +1,34 @@
+TITLE: ClearTrace Privacy Ops Playbook + Agent Builder Kit · $49
+
+PRICE: 49
+
+DESCRIPTION:
+Run privacy remediation on your terms — not through a black-box service.
+
+ClearTrace is an owner-controlled system to find public exposures, draft factual removal requests, verify takedowns, and maintain an auditable case file. Bring your own API keys. Optional automation. MIT-licensed source on GitHub.
+
+This Gumroad product is the operator playbook + agent kit setup guide (the full app is free to clone):
+
+What's inside this download:
+• Privacy Ops Playbook — Hermes 10-step workflow, case SOPs, compliance gates
+• Agent Builder Setup — 20 skills, MCP server for Cursor, platform rules (Cursor / Claude / Windsurf)
+• BYOK Connector Matrix — SerpAPI, Gmail, OpenAI, Stripe, webhooks, and more
+• Self-host & deploy guide — local, Docker, Vercel
+• Demo → Pro upgrade path — when to enable live discovery, broker sweep, SLA tracking
+
+Full source code (MIT): https://github.com/Alfredapp-hash/Clear-Trace
+
+Perfect for:
+- Individuals removing people-search / broker listings
+- Privacy-conscious professionals managing personal-brand exposure
+- Small teams running structured removal cases with audit trails
+- Developers self-hosting with BYOK connectors
+- Agent builders replicating the stack in Cursor or Claude Code
+
+You stay in control: credentials, approvals, outbound messages, and proof of work.
+
+Instant download. Markdown playbooks + links to clone the repo.
+
+TAGS: privacy, data removal, cleartrace, agent builder, mcp, byok, reputation, gdpr, self-hosted, open source
+
+COVER IDEA: Shield + timeline/case file aesthetic. Dark blue (#0f1117), clean typography. "Owner-controlled privacy remediation."

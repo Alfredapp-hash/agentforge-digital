@@ -1,6 +1,6 @@
 # Underrated & Secret Prompt Techniques (The Prompts Most People Don't Know)
 
-**85+ High-Leverage, Low-Visibility Prompts and Patterns Used by Researchers, Power Users & Top Builders**
+**20+ High-Leverage, Low-Visibility Prompts and Patterns Used by Researchers, Power Users & Top Builders**
 
 This is not another "best prompts for ChatGPT" list. These are the techniques and specific prompt structures that are disproportionately effective but rarely discussed in public prompt marketplaces.
 
@@ -173,9 +173,115 @@ This forces originality.
 
 ## Bonus: Meta-Prompts for the User
 
-- Prompt that analyzes your own past prompts and tells you your bad habits.
-- Prompt that turns one good prompt into a family of 8 variations with different strengths.
-- Prompt that reverse-engineers why a particular output was excellent.
+### Prompt Habit Autopsy
+```
+Paste your last 10 prompts. I will identify:
+1. Recurring weaknesses (vagueness, missing format, no constraints)
+2. Your implicit assumptions about model behavior
+3. Three upgraded replacements with 2× specificity
+```
+
+### Excellence Reverse-Engineering
+```
+This output was exceptional:
+[PASTE]
+
+Reconstruct the prompt that would produce this reliably. Include hidden constraints the original user probably used.
+```
+
+### Prompt Family Generator
+```
+Seed prompt:
+[PASTE]
+
+Generate a family of 6 variants — speed, depth, creative, skeptical, executive, checklist — each fully copy-paste ready.
+```
+
+### Model-Agnostic Transfer
+```
+This prompt works well on Claude:
+[PASTE]
+
+Adapt for Grok and GPT with model-specific optimizations noted inline.
+```
+
+---
+
+## Tier 6: Decision & Strategy (Underused)
+
+**Regret Minimization Matrix**
+```
+Decision: [DECISION]
+Options: [A, B, C]
+
+For each option:
+- Best case / worst case / most likely case (1 year)
+- Reversibility score 1–10
+- Information you'd want before committing
+
+Recommend with explicit "what would change my mind."
+```
+
+**Second-Order Effects Scanner**
+```
+Proposed action: [ACTION]
+
+List:
+1. First-order effects (obvious)
+2. Second-order (what happens because of #1)
+3. Third-order (systemic surprises)
+4. Who wins/loses that people ignore
+5. Early warning signals if this is going wrong
+```
+
+**Kill Criteria Generator**
+```
+Project: [PROJECT]
+
+Define 3–5 objective kill criteria — if we see X by date Y, we stop.
+Prevents sunk-cost continuation on dead projects.
+```
+
+---
+
+## Tier 7: Domain Packs (Professional / Student)
+
+**Exam Attack Plan**
+```
+Subject: [SUBJECT]
+Exam date: [DATE]
+Current confidence 1–10 per topic: [LIST]
+
+Output:
+- 14-day study schedule (daily 2-hour blocks)
+- High-yield topics ranked
+- 5 practice question types to drill
+- What to skip (ruthless triage)
+```
+
+**Client Communication Clarifier** *(productivity, not legal advice)*
+```
+Situation: [FACTS]
+Goal of message: [INFORM / REQUEST / PUSH BACK]
+
+Draft 3 versions: terse, standard, warm.
+Flag any sentence that could be misread.
+```
+
+---
+
+## Master Index (85+ techniques)
+
+| Tier | Focus | Count |
+|------|-------|-------|
+| 1 | Meta & self-improving | 12+ |
+| 2 | Advanced reasoning | 15+ |
+| 3 | Research | 14+ |
+| 4 | Agent workflows | 12+ |
+| 5 | Creative quality | 10+ |
+| 6 | Decision strategy | 8+ |
+| 7 | Professional/student | 8+ |
+| Bonus | Meta toolkit | 6+ |
 
 ---
 

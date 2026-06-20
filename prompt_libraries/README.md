@@ -1,37 +1,35 @@
 # AgentForge Prompt Libraries
 
-High-converting, easy-to-sell digital prompt products.
+High-converting, tool-specific prompt products. Each folder is a standalone Gumroad SKU.
 
-## Current Libraries (Ready to Package)
+**Package all:** `python scripts/package_products.py` → creates `*.zip` next to each library.
 
-1. **grok-xai-power-user-library**
-   - 150+ Grok-optimized prompts
-   - Tool use, agent scaffolding, meta prompts
-   - Perfect for xAI power users
+## Libraries
 
-2. **claude-power-tool-mpc**
-   - Master Prompt Collection (MPC) for Claude 4 + tools
-   - Artifacts, Projects, Computer Use focused
-   - High demand niche
+| Folder | Price | Focus |
+|--------|-------|--------|
+| `grok-xai-power-user-library` | $19 | Grok 4, reasoning, agents, meta-prompts |
+| `claude-power-tool-mpc` | $22 | Claude Projects, Artifacts, Computer Use |
+| `underrated-secret-prompt-techniques` | $17 | Advanced patterns most users miss |
+| `ai-toolchain-master-library` | $24 | Cursor, Windsurf, Perplexity, multi-tool |
 
-3. **underrated-secret-prompt-techniques**
-   - "Prompts people don't know"
-   - Advanced, obscure, high-ROI techniques across models
-   - Excellent perceived value and curiosity factor
+## Bundles (higher AOV)
 
-4. **ai-toolchain-master-library**
-   - Prompts for Cursor, Windsurf, Perplexity, multi-tool workflows
-   - "AI Tool Libraries" angle
+| Bundle | Price | File |
+|--------|-------|------|
+| AI Power User (all 4) | $57 | `../products/BUNDLE_AI_POWER_USER_GUMROAD.txt` |
+| Toolchain Mastery | $47 | Grok + Claude + Toolchain |
+| Secret Knowledge | $39 | Underrated + Claude MPC |
 
-## Recommended Bundles (High AOV)
-- "AI Power User Bundle" = Grok + Claude + Underrated
-- "Toolchain Mastery" = AI Toolchain + Grok + Claude
-- "Secret Knowledge Pack" = Underrated + MPC style collections
+## Selling tips
 
-## Selling Tips
-- Price $17–27 individually
-- $47–67 for bundles
-- Emphasize "prompts people don't know" and tool-specific value
-- Deliver as clean Markdown + PDF + categorized folders
+- Price $17–27 individually; $47–67 for bundles
+- Lead with "prompts people don't know" and tool-specific value
+- Deliver as Markdown (+ optional PDF export)
+- Cross-link single packs to the $57 bundle on Gumroad upsells
 
-These are designed to sell easily because they solve real frustration with generic AI output and target buyers who already spend money on AI tools.
+## Customer deliverable
+
+Each zip contains:
+- `product.md` — full content
+- `GUMROAD_LISTING.txt` — seller reference copy

@@ -1,0 +1,22 @@
+TITLE: AI Power User Bundle — Grok + Claude + Secret Techniques + Toolchain
+
+PRICE: 57
+
+DESCRIPTION:
+The complete prompt stack for builders who use multiple AI tools every day.
+
+Includes all four libraries:
+• Grok & xAI Power User Library (20+ core prompts + chains) — $19 value
+• Claude Power User & Tool MPC (19+ core prompts) — $22 value
+• Underrated & Secret Prompt Techniques (20+ patterns) — $17 value
+• AI Toolchain Master Library (12+ workflows) — $24 value
+
+Total if bought separately: $82. Bundle price: $57 (save $25).
+
+Everything is copy-paste ready Markdown. Instant download.
+
+Perfect upsell after any single prompt pack purchase.
+
+TAGS: prompt bundle, grok, claude, cursor, ai prompts, power user, master prompt collection, ai tools
+
+COVER IDEA: Four stacked cards with tool logos. "Power User Bundle" + "Save $25" badge.

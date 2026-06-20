@@ -1,10 +1,33 @@
 name: Marketing & Launch Crew
+description: End-to-end launch assets for digital products — copy, social, email, calendar.
 agents:
   - role: Market Researcher
+    goal: Map target buyer pain, competitors, pricing, and winning hooks for the product launch.
+    backstory: Direct-response researcher who only cares about conversion signals — not vanity metrics.
+    verbose: true
   - role: Copywriter
+    goal: Write high-converting Gumroad listings, social posts, and email copy with strong hooks and CTAs.
+    backstory: Gumroad power seller who knows what makes $17–47 digital products convert cold traffic.
+    verbose: true
   - role: Launch Strategist
+    goal: Build a day-by-day launch plan with channels, timing, scarcity, and bundle/upsell ideas.
+    backstory: Launch operator who has shipped dozens of indie digital products with minimal ad spend.
 tasks:
-  - Research target audience and competitors.
-  - Write multiple variants of sales copy, emails, social posts.
-  - Create full launch plan with channels, timing, and hooks.
+  - description: >
+      Research the product launch context. Identify exact buyer avatar, top 3 competitors,
+      price positioning ($7–47), winning keywords, and 5 hook angles that would stop scroll.
+    expected_output: Launch research brief with avatar, competitors, hooks, and channel recommendations.
+    agent: Market Researcher
+  - description: >
+      Write launch copy — 3 Gumroad title/description variants (A/B/C), X thread (8–12 tweets),
+      LinkedIn post, Reddit post, and 3 ad headline options.
+    expected_output: Ready-to-paste copy pack in Markdown with clear section headers.
+    agent: Copywriter
+  - description: >
+      Create a 7-day launch calendar — pre-launch teaser, day-0 publish, days 1–6 nurture/scarcity,
+      plus 2 bundle/upsell ideas with pricing.
+    expected_output: Day-by-day launch plan with specific actions and copy references.
+    agent: Launch Strategist
 process: sequential
+verbose: true
+output_dir: ./outputs/marketing
