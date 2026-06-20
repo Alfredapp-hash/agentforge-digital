@@ -690,14 +690,76 @@ def _retry_request(method: str, url: str, **kwargs) -> requests.Response:
         import time; time.sleep(1.5 * (attempt + 1))
     raise last_exc or RuntimeError("Request failed after retries")
 
+def upload_gumroad_file(file_path: str, gumroad_token: str) -> Optional[str]:
+    """Upload a deliverable via Gumroad presign → S3 → complete flow. Returns file URL."""
+    p = Path(file_path)
+    if not p.exists():
+        logger.warning("Gumroad upload skipped; file missing: %s", file_path)
+        return None
+
+    headers = {"Authorization": f"Bearer {gumroad_token}"}
+    payload = p.read_bytes()
+    content_type = "application/zip" if p.suffix.lower() == ".zip" else "application/octet-stream"
+
+    presign_resp = _retry_request(
+        "POST",
+        f"{GUMROAD_API}/files/presign",
+        headers=headers,
+        data={
+            "filename": p.name,
+            "file_size": len(payload),
+            "content_type": content_type,
+        },
+    )
+    presign = presign_resp.json()
+    if not presign.get("success"):
+        raise RuntimeError(f"Gumroad presign failed: {presign}")
+
+    parts_meta = []
+    for part in presign.get("parts", []):
+        put_resp = requests.put(
+            part["presigned_url"],
+            data=payload,
+            headers={"Content-Type": content_type},
+            timeout=120,
+        )
+        if put_resp.status_code not in (200, 201):
+            raise RuntimeError(f"S3 upload failed ({put_resp.status_code}): {put_resp.text[:200]}")
+        etag = put_resp.headers.get("ETag", "").strip('"')
+        parts_meta.append((part["part_number"], etag))
+
+    complete_data = {
+        "upload_id": presign["upload_id"],
+        "key": presign["key"],
+    }
+    for part_number, etag in parts_meta:
+        complete_data["parts[][part_number]"] = part_number
+        complete_data["parts[][etag]"] = etag
+
+    complete_resp = _retry_request(
+        "POST",
+        f"{GUMROAD_API}/files/complete",
+        headers=headers,
+        data=complete_data,
+    )
+    complete = complete_resp.json()
+    if not complete.get("success"):
+        raise RuntimeError(f"Gumroad upload complete failed: {complete}")
+
+    file_url = complete.get("file_url")
+    logger.info("Gumroad file uploaded: %s", p.name)
+    return file_url
+
+
 def create_gumroad_product(
     title: str,
     description: str,
     price_cents: int,
     gumroad_token: str,
     file_path: Optional[str] = None,
+    publish: bool = False,
 ) -> Dict[str, Any]:
-    """Create a product on Gumroad. Tries to attach file if provided."""
+    """Create a product on Gumroad. Attaches file via presign flow when provided."""
     if not gumroad_token:
         raise ValueError("Gumroad access token required (env GUMROAD_ACCESS_TOKEN or paste in UI)")
 
@@ -707,38 +769,31 @@ def create_gumroad_product(
         "description": description[:5000],
         "price": price_cents,
         "custom_receipt": "Thank you! Your digital product is ready.",
-        "filetype": "zip",  # hint for digital deliverable
     }
 
-    files = None
     if file_path and Path(file_path).exists():
         try:
-            files = {"file": (Path(file_path).name, open(file_path, "rb"), "application/zip")}
-            logger.info("Attempting Gumroad file attachment: %s", file_path)
+            file_url = upload_gumroad_file(file_path, gumroad_token)
+            if file_url:
+                data["files[][url]"] = file_url
+                data["files[][name]"] = Path(file_path).name
         except Exception as e:
-            logger.warning("File open failed for Gumroad upload: %s", e)
+            logger.warning("Gumroad file upload failed; creating metadata only: %s", e)
 
-    try:
-        resp = _retry_request("POST", f"{GUMROAD_API}/products", headers=headers, data=data, files=files)
-    finally:
-        if files and hasattr(files["file"][1], "close"):
-            try:
-                files["file"][1].close()
-            except Exception:
-                pass
+    if publish:
+        data["published"] = "true"
 
-    if resp.status_code not in (200, 201):
-        # Fallback: create without file (common case)
-        logger.warning("Direct file upload failed or not supported. Creating metadata only. You can attach the zip manually.")
-        data.pop("filetype", None)
-        resp = _retry_request("POST", f"{GUMROAD_API}/products", headers=headers, data=data)
-
+    resp = _retry_request("POST", f"{GUMROAD_API}/products", headers=headers, data=data)
     if resp.status_code not in (200, 201):
         raise RuntimeError(f"Gumroad error {resp.status_code}: {resp.text}")
 
-    product = resp.json().get("product", {})
+    body = resp.json()
+    if not body.get("success"):
+        raise RuntimeError(f"Gumroad create failed: {body}")
+
+    product = body.get("product", {})
     gumroad_id = product.get("id")
-    gumroad_url = product.get("short_url") or f"https://gumroad.com/products/{gumroad_id}"
+    gumroad_url = product.get("short_url") or product.get("landing_url") or f"https://gumroad.com/products/{gumroad_id}"
 
     logger.info("Gumroad product created: %s", gumroad_url)
     return {
